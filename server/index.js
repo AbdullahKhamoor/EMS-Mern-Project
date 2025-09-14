@@ -1,6 +1,9 @@
 import express from "express";
 import cors from "cors"
 import authRouter from "./routes/auth.route.js"
+import connectTotDatabase from "./db/db.js"
+
+connectTotDatabase()
 
 const app = express()
 

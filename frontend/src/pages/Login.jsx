@@ -1,19 +1,30 @@
+import axios from "axios"
 import React, { useState } from 'react'
 
 const Login = () => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const [error, setError] = useState(null)
+
 
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
 
-            const response = await axios.post("http://localhost:3000/api/auth/login",
+            const response = await axios.post(
+                "http://localhost:3000/api/auth/login",
                 { email, password }
             )
-            console.log(response);
+            if (response.data.success) {
+                alert("Successfully Login")
+            }
         } catch (error) {
-            console.log(error)
+            if (error.response && !error.response.data.success) {
+                setError(error.response.data.error)
+            }
+            else {
+                setError("Server Error")
+            }
         }
     }
 
@@ -24,6 +35,7 @@ const Login = () => {
                 <h2 className=' font-pacific text-3xl text-white ' >Employee Management System</h2>
                 <div className='border shadow p-6 w-80 bg-white'>
                     <h2 className=' text-2xl font-pacifico mb-4' style={{ font: "pacifico" }}>Login</h2>
+                    {error && <p className="text-red-500">{error}</p>}
                     <form onSubmit={handleSubmit}>
                         <div className='mb-4'>
                             <label htmlFor="email" className='font-pacifico block'>Email</label>
@@ -32,6 +44,7 @@ const Login = () => {
                                 placeholder='Enter Email'
                                 className='w-full px-2 py-2 border'
                                 onChange={(e) => setEmail(e.target.value)}
+                                required
                             />
 
                         </div>
@@ -42,6 +55,7 @@ const Login = () => {
                                 placeholder='*******'
                                 className='w-full px-2 py-2 border'
                                 onChange={(e) => setPassword(e.target.value)}
+                                required
                             />
                         </div>
                         <div className='mb-4 flex items-center justify-between'>
