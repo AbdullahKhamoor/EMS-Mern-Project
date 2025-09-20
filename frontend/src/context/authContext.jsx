@@ -1,5 +1,5 @@
 import axios from 'axios'
-import React, { useContext, useEffect } from 'react'
+import { useContext, useEffect } from 'react'
 import { createContext } from 'react'
 import { useState } from 'react'
 
@@ -13,7 +13,6 @@ const authContext = ({ children }) => {
 
     useEffect(() => {
         const verifyUser = async () => {
-
             try {
                 const token = localStorage.getItem('token')
                 if (token) {
@@ -27,8 +26,11 @@ const authContext = ({ children }) => {
                     }
                 } else {
                     setUser(null)
+                    setLoading(false)
+
                 }
             } catch (error) {
+                console.log(error)
                 if (error.response && !error.response.data.error) {
                     setUser(null)
                 }
