@@ -12,12 +12,12 @@ const Login = () => {
 
 
     const handleSubmit = async (e) => {
-        // const { user } = useContext(userContext)
+
         e.preventDefault()
         try {
 
             const response = await axios.post(
-                "http://localhost:3000/api/auth/login",
+                "http://localhost:5000/api/auth/login",
                 { email, password }
             )
             if (response.data.success) {
@@ -71,7 +71,7 @@ const Login = () => {
                             />
                         </div>
                         <div className='mb-4 flex items-center justify-between'>
-                            <label className='' htmlFor="">
+                            <label>
                                 <input type="checkbox" className='form-checkbox' />
                                 <span className='ml-2 text-gray-700'>Remember me</span>
                             </label>
