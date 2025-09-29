@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
 
@@ -13,7 +13,7 @@ const AddDepartment = () => {
     const navigate = useNavigate()
 
     const handleChange = (e) => {
-        const { name, value } = e.target.value;
+        const { name, value } = e.target;
         setDepartment({ ...department, [name]: value })
     }
 
