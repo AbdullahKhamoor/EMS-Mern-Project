@@ -11,7 +11,7 @@ const DepartmentList = () => {
     const [filteredDepartments, setFilteredDepartments] = useState([])
 
     const onDepartmentDelete = async (id) => {
-        const data = await departments.filter(dep => dep._id !== id)
+        const data = departments.filter(dep => dep._id !== id)
         setDepartments(data)
     }
 
