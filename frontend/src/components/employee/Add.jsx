@@ -7,6 +7,7 @@ const Add = () => {
 
     const [departments, setDepartments] = useState([])
 
+
     const [formData, setFormData] = useState({})
     const navigate = useNavigate()
 
@@ -17,6 +18,8 @@ const Add = () => {
         }
         getDepartments()
     }, [])
+
+
 
     const handleChange = (e) => {
 
