@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { fetchDepartments } from '../../utils/EmployeeHelper'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 const Add = () => {
 
     const [departments, setDepartments] = useState([])
 
-    const [formData, serFormData] = useState({})
+    const [formData, setFormData] = useState({})
+    const navigate = useNavigate()
 
     useEffect(() => {
         const getDepartments = async () => {
@@ -18,11 +20,11 @@ const Add = () => {
 
     const handleChange = (e) => {
 
-        const [name, value, files] = e.target
+        const { name, value, files } = e.target
         if (name === 'image') {
-            serFormData((prevData) => ({ ...prevData, [name]: files[0] }))
+            setFormData((prevData) => ({ ...prevData, [name]: files[0] }))
         } else {
-            serFormData((prevData) => ({ ...prevData, [name]: value }))
+            setFormData((prevData) => ({ ...prevData, [name]: value }))
         }
     }
 
@@ -170,7 +172,6 @@ const Add = () => {
                         <select
                             name="department"
                             onChange={handleChange}
-                            placeholder="Marital Status"
                             className='mt-1 p-2 block w-full border border-gray-300 rounded-md'
                             required
                         >
@@ -220,8 +221,8 @@ const Add = () => {
                             required
                         >
                             <option value="">Select Role</option>
-                            <option value="">Admin</option>
-                            <option value="">Employee</option>
+                            <option value="admin">Admin</option>
+                            <option value="employee">Employee</option>
                         </select>
                     </div>
                     {/*  Image Upload */}
