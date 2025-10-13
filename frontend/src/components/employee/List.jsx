@@ -9,6 +9,8 @@ const List = () => {
     const [employees, setEmployees] = useState([])
     const [empLoading, setEmpLoading] = useState(false)
 
+    const [filteredEmployee, setFilteredEmployees] = useState([])
+
 
     useEffect(() => {
         const fetchEmployees = async () => {
@@ -35,6 +37,7 @@ const List = () => {
                         }
                     ))
                     setEmployees(data);
+                    setFilteredEmployees(data)
                 }
             } catch (error) {
                 if (error.response && !error.response.data.success) {
@@ -49,6 +52,13 @@ const List = () => {
         fetchEmployees();
     }, []);
 
+    const handleFilter = (e) => {
+        const records = employees.filter((emp) => (
+            emp.name.toLowerCase().includes(e.target.value.toLowerCase())
+        ))
+        setFilteredEmployees(records)
+    }
+
     return (
         <div className='p-6'>
             <div className='text-center'>
@@ -59,12 +69,13 @@ const List = () => {
                     type="text"
                     placeholder='Search By Dep Name'
                     className='px-4 py-0.5'
+                    onChange={handleFilter}
                 />
                 <Link to="/admin-dashboard/add-employee" className='px-4 py-1 bg-teal-600 rounded text-white' >
                     Add New Employee </Link>
             </div>
             <div>
-                <DataTable columns={columns} data={employees} />
+                <DataTable columns={columns} data={filteredEmployee} pagination />
             </div>
         </div>
     )
