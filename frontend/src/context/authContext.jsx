@@ -45,13 +45,13 @@ const authContext = ({ children }) => {
         setUser(user)
     }
 
-    const logOut = () => {
+    const logout = () => {
         setUser(null)
         localStorage.removeItem("token")
     }
     return (
         <>
-            <userContext.Provider value={{ user, login, logOut, loading }}>
+            <userContext.Provider value={{ user, login, logout, loading }}>
                 {children}
             </userContext.Provider>
 

@@ -1,0 +1,11 @@
+path : it is used to give path when uploading file with the help of 
+       multer.
+
+
+In essence, node --env-file=.env app.js means "run app.js and load all
+     environment variables defined in the .env file before executing
+     the application."
+
+script{
+  "start": "nodemon --env-file=.env index.js"
+}
