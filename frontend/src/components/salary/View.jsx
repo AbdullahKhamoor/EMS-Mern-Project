@@ -18,7 +18,10 @@ const View = () => {
                 }
 
             })
+            console.log(response)
+
             if (response.data.success) {
+                console.log(response)
                 setSalaries(response.data.salary)
                 setFilteredSalaries(response.data.salary)
             }
