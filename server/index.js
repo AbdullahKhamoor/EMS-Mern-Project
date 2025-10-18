@@ -5,6 +5,7 @@ import departmentRouter from "./routes/department.route.js"
 import employeeRouter from "./routes/employee.route.js"
 import salaryRouter from "./routes/salary.route.js"
 import connectTotDatabase from "./db/db.js"
+import leaveRouter from "./routes/leave.route.js"
 
 
 connectTotDatabase()
@@ -18,6 +19,7 @@ app.use('/api/auth', authRouter)
 app.use('/api/department', departmentRouter)
 app.use('/api/employee', employeeRouter)
 app.use('/api/salary', salaryRouter)
+app.use('/api/leave', leaveRouter)
 
 app.listen(process.env.PORT, () => {
     console.log(`Server is Running on port ${process.env.PORT}`)
