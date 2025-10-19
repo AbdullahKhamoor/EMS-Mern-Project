@@ -12,20 +12,17 @@ try {
     }
     
     const isMatch = await bcrypt.compare(oldPassword, user.password)
-    console.log(isMatch)
     if(!isMatch){
     return res.status(500).json({success: false, error: "wrong Old Password"})
     }
 
     const hashPassword = await bcrypt.hash(newPassword, 10)
-    console.log(hashPassword)
 
     const newUser = await User.findByIdAndUpdate({_id: userId}, {password: hashPassword})
 
     return res.status(200).json({success: true})
 
 } catch (error) {
-    // console.log(error.message)
     return res.status(500).json({success: false, error: "setting Error"})
 }
 }
