@@ -80,7 +80,7 @@ const View = () => {
                             <tbody>
                                 {filteredSalaries.map((salary) => (
                                     <tr
-                                        key={salary.id}
+                                        key={salary}
                                         className='bg-white border-b dark:bg-gray-800 dark:border-gray-700'
                                     >
                                         <td className='px-6 py-3'>{sno++}</td>
