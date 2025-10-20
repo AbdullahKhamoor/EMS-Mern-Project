@@ -26,7 +26,6 @@ const DepartmentList = () => {
 
                 })
                 if (response.data.success) {
-                    console.log(response);
                     let sno = 1;
                     const data = await response.data.departments.map((dep) => (
                         {
