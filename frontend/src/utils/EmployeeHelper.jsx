@@ -94,7 +94,6 @@ export const EmployeeButtons = ({ Id }) => {
     const navigate = useNavigate()
 
 
-
     return (
         <div className="flex space-x-3">
             <button className="px-4  py-1 bg-teal-600 text-white"

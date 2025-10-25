@@ -15,6 +15,7 @@ const Add = () => {
         const getDepartments = async () => {
             const departments = await fetchDepartments()
             setDepartments(departments)
+            console.log(departments)
         }
         getDepartments()
     }, [])

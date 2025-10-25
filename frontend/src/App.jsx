@@ -46,6 +46,7 @@ function App() {
           <Route path="/admin-dashboard/add-employee" element={<Add />}></Route>
           <Route path="/admin-dashboard/employees/:id" element={<View />}></Route>
           <Route path="/admin-dashboard/employees/edit/:id" element={<Edit />}></Route>
+          <Route path="/admin-dashboard/employees/salary/:id" element={<ViewSalary />}></Route>
 
           <Route path="/admin-dashboard/salary/add" element={<AddSalary />}></Route>
           <Route path="/admin-dashboard/leaves" element={<Table />}></Route>
